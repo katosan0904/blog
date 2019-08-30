@@ -1,0 +1,17 @@
+<div class="contents row">
+  <a href="/">一覧にもどる</a>
+
+   <h3>
+      編集する
+    </h3>
+ <%= form_for(@articles,url: {controller: 'blog', action: 'update' }) do |f| %>
+<div style="margin: 8px 0">
+ <%= f.text_field :title, placeholder: 'タイトルを入力してください', value: ''  %>
+ </div>
+  <%= f.text_field :image %>
+  <div style="margin: 8px 0">
+  <%= f.text_area :content, placeholder: '本文を入力してください', style: 'width: 100%;height: 300px;' %>
+   </div>
+  <%= f.submit "送信" %>
+  <% end %>
+</div>

@@ -1,0 +1,22 @@
+ <div class="list_article">
+ <div class="contents">
+<h2><%= article.title %></h2>
+<% if article.image != "" %>
+<%=image_tag article.image, :width => '300', :height=> '200' %>
+<% end %>
+ <p><%= article.content %></p>
+ </div>
+ 
+<% if user_signed_in? && current_user.id == article.user_id %>
+        <li>
+          <%= link_to '編集', "/blog/#{article.id}/edit", method: :get %>
+        </li>
+        <li>
+          <%= link_to '削除', "/blog/#{article.id}", method: :delete %>
+        </li>
+        <% end %>
+      <li>
+              <span>投稿者</span><%= article.user.nickname %></span>
+      </li>
+    
+</div>

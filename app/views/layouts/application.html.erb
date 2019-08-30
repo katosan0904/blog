@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myblog</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+  <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+   <!-- Compiled and minified JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+   <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+        <nav>
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo">徒然日記</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+         <% if user_signed_in? %>
+          <li>ユーザー:<%= current_user.nickname %>さん</li>
+            <li><a href="/blog/new">新規投稿</a></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </ul>
+             <% else %>
+             <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+             <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+             <% end %>
+        </div>
+      </nav>
+<script type="text/javascript" src="./app.js"></script>
+   <div class="top">
+<div class="box">
+<h1>徒然日記</h1>
+</div>
+   </div>
+
+    <%= yield %>
+
+<footer class="page-footer">
+          <div class="footer-copyright">
+            <div class="container">
+            <a class="grey-text text-lighten-4 right" href="#!"></a>
+            </div>
+          </div>
+        </footer>
+  </body>
+</html>
